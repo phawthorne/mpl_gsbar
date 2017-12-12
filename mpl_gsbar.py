@@ -33,9 +33,9 @@ def grouped_stacked_bar(ax, data, **kwargs):
         bar_l = [g + b*bar_spacing for g in group_left_pos]
         bar_b = [0 for g in range(ngrps)]
         for c in range(ncats):
-            bar_h = [bar_b[g]+data[g, b, c] for g in range(ngrps)]
+            bar_h = [data[g, b, c] for g in range(ngrps)]
             ax.bar(bar_l, bar_h, width=bar_width, bottom=bar_b, color=cat_colors[c])
-            bar_b = bar_h
+            bar_b = [bar_b[g]+data[g, b, c] for g in range(ngrps)]
 
 
 if __name__ == '__main__':
